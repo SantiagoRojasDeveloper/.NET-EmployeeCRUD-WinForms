@@ -1,0 +1,10 @@
+C:\Users\ManuelChaparro\source\repos\EmployeeManager\EmployeeDB\bin\Debug\EmployeeDB.dll.config
+C:\Users\ManuelChaparro\source\repos\EmployeeManager\EmployeeDB\bin\Debug\EmployeeDB.dll
+C:\Users\ManuelChaparro\source\repos\EmployeeManager\EmployeeDB\bin\Debug\EmployeeDB.pdb
+C:\Users\ManuelChaparro\source\repos\EmployeeManager\EmployeeDB\obj\Debug\EmployeeDB.csproj.AssemblyReference.cache
+C:\Users\ManuelChaparro\source\repos\EmployeeManager\EmployeeDB\obj\Debug\EmployeeDB.csproj.CoreCompileInputs.cache
+C:\Users\ManuelChaparro\source\repos\EmployeeManager\EmployeeDB\obj\Debug\EmployeeDB.dll
+C:\Users\ManuelChaparro\source\repos\EmployeeManager\EmployeeDB\obj\Debug\EmployeeDB.pdb
+C:\Users\ManuelChaparro\source\repos\EmployeeManager\EmployeeDB\bin\Debug\ModelEmployee.dll
+C:\Users\ManuelChaparro\source\repos\EmployeeManager\EmployeeDB\bin\Debug\ModelEmployee.pdb
+C:\Users\ManuelChaparro\source\repos\EmployeeManager\EmployeeDB\obj\Debug\EmployeeDB.csproj.CopyComplete

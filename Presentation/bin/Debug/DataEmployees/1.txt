@@ -1,0 +1,6 @@
+Nombre: 1
+Apellidos: 1
+Fecha de Nacimiento: 20/01/2001 12:05:48 a. m.
+Identificacion: 1
+Tipo de Identificacion: Cédula de Ciudadanía
+Genero: Masculino

@@ -1,0 +1,12 @@
+C:\Users\ManuelChaparro\source\repos\EmployeeManager\Business\bin\Debug\Business.dll
+C:\Users\ManuelChaparro\source\repos\EmployeeManager\Business\bin\Debug\Business.pdb
+C:\Users\ManuelChaparro\source\repos\EmployeeManager\Business\obj\Debug\Business.csproj.AssemblyReference.cache
+C:\Users\ManuelChaparro\source\repos\EmployeeManager\Business\obj\Debug\Business.csproj.CoreCompileInputs.cache
+C:\Users\ManuelChaparro\source\repos\EmployeeManager\Business\obj\Debug\Business.csproj.CopyComplete
+C:\Users\ManuelChaparro\source\repos\EmployeeManager\Business\obj\Debug\Business.dll
+C:\Users\ManuelChaparro\source\repos\EmployeeManager\Business\obj\Debug\Business.pdb
+C:\Users\ManuelChaparro\source\repos\EmployeeManager\Business\bin\Debug\EmployeeDB.dll
+C:\Users\ManuelChaparro\source\repos\EmployeeManager\Business\bin\Debug\EmployeeDB.pdb
+C:\Users\ManuelChaparro\source\repos\EmployeeManager\Business\bin\Debug\EmployeeDB.dll.config
+C:\Users\ManuelChaparro\source\repos\EmployeeManager\Business\bin\Debug\ModelEmployee.dll
+C:\Users\ManuelChaparro\source\repos\EmployeeManager\Business\bin\Debug\ModelEmployee.pdb

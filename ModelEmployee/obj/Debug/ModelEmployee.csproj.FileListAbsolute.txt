@@ -1,0 +1,6 @@
+C:\Users\ManuelChaparro\source\repos\EmployeeManager\ModelEmployee\bin\Debug\ModelEmployee.dll
+C:\Users\ManuelChaparro\source\repos\EmployeeManager\ModelEmployee\bin\Debug\ModelEmployee.pdb
+C:\Users\ManuelChaparro\source\repos\EmployeeManager\ModelEmployee\obj\Debug\ModelEmployee.csproj.AssemblyReference.cache
+C:\Users\ManuelChaparro\source\repos\EmployeeManager\ModelEmployee\obj\Debug\ModelEmployee.csproj.CoreCompileInputs.cache
+C:\Users\ManuelChaparro\source\repos\EmployeeManager\ModelEmployee\obj\Debug\ModelEmployee.dll
+C:\Users\ManuelChaparro\source\repos\EmployeeManager\ModelEmployee\obj\Debug\ModelEmployee.pdb

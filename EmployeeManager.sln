@@ -1,0 +1,60 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.8.34309.116
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "EmployeeProject", "EmployeeProject", "{66C272F4-288C-41D5-ABC8-C1790A30C759}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Presentation", "Presentation\Presentation.csproj", "{468766A1-6D48-4824-94C4-8DBAD3412CE5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Business", "Business\Business.csproj", "{2706B1FE-DEA7-4972-8007-D6A0315D3A93}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmployeeDB", "EmployeeDB\EmployeeDB.csproj", "{80886E65-6CA8-4FFA-9BE7-310E58B867E8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ModelEmployee", "ModelEmployee\ModelEmployee.csproj", "{8A534066-42A5-4E3B-B9FA-C79902799328}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "CapaDatos", "CapaDatos", "{DEC5F409-4E66-490B-9F81-E39D9883DC2E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "CapaLogica", "CapaLogica", "{439BFBC8-7067-46C7-B941-8E87890C913D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "CapaPresentacion", "CapaPresentacion", "{1308FB17-EDAA-4369-8FF8-E422C92B839D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{468766A1-6D48-4824-94C4-8DBAD3412CE5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{468766A1-6D48-4824-94C4-8DBAD3412CE5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{468766A1-6D48-4824-94C4-8DBAD3412CE5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{468766A1-6D48-4824-94C4-8DBAD3412CE5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2706B1FE-DEA7-4972-8007-D6A0315D3A93}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2706B1FE-DEA7-4972-8007-D6A0315D3A93}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2706B1FE-DEA7-4972-8007-D6A0315D3A93}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2706B1FE-DEA7-4972-8007-D6A0315D3A93}.Release|Any CPU.Build.0 = Release|Any CPU
+		{80886E65-6CA8-4FFA-9BE7-310E58B867E8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{80886E65-6CA8-4FFA-9BE7-310E58B867E8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{80886E65-6CA8-4FFA-9BE7-310E58B867E8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{80886E65-6CA8-4FFA-9BE7-310E58B867E8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8A534066-42A5-4E3B-B9FA-C79902799328}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8A534066-42A5-4E3B-B9FA-C79902799328}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8A534066-42A5-4E3B-B9FA-C79902799328}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8A534066-42A5-4E3B-B9FA-C79902799328}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{468766A1-6D48-4824-94C4-8DBAD3412CE5} = {1308FB17-EDAA-4369-8FF8-E422C92B839D}
+		{2706B1FE-DEA7-4972-8007-D6A0315D3A93} = {439BFBC8-7067-46C7-B941-8E87890C913D}
+		{80886E65-6CA8-4FFA-9BE7-310E58B867E8} = {DEC5F409-4E66-490B-9F81-E39D9883DC2E}
+		{8A534066-42A5-4E3B-B9FA-C79902799328} = {DEC5F409-4E66-490B-9F81-E39D9883DC2E}
+		{DEC5F409-4E66-490B-9F81-E39D9883DC2E} = {66C272F4-288C-41D5-ABC8-C1790A30C759}
+		{439BFBC8-7067-46C7-B941-8E87890C913D} = {66C272F4-288C-41D5-ABC8-C1790A30C759}
+		{1308FB17-EDAA-4369-8FF8-E422C92B839D} = {66C272F4-288C-41D5-ABC8-C1790A30C759}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {504C14C3-3CE9-431F-9E7B-63559398616E}
+	EndGlobalSection
+EndGlobal
