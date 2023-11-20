@@ -16,7 +16,7 @@ namespace EmployeeDB
         private string pathEmployeeDB;
 
         //Cadena de conexión a la base de datos
-        private string _dbConnection = "Data Source=localhost\\SQLEXPRESS;Initial Catalog=EmployeeManager;Integrated Security=True;TrustServerCertificate=True";
+        private string _dbConnection = "";
 
         //Variables de consultas
         private string _queryLogin = "IF EXISTS (SELECT 1 FROM [dbo].[LoginApp] WHERE [email] = @User AND [password] = @Password) SELECT 1 ELSE SELECT 0";
@@ -70,8 +70,9 @@ namespace EmployeeDB
         }
 
         public string CreateEmployee(string name, string surname, string birthdate,
-            string identification, string typeIdentification, string gender, string pathImage,
-            bool createImage) 
+            string identification, string typeIdentification, string gender,
+            string country, string position, string code, string cellphone,
+            string phone, string pathImage, bool createImage) 
         {
             if (createImage) 
             {
@@ -87,6 +88,11 @@ namespace EmployeeDB
                         writer.WriteLine($"Identification;  {identification}");
                         writer.WriteLine($"TypeIdentification;  {typeIdentification}");
                         writer.WriteLine($"Gender;  {gender}");
+                        writer.WriteLine($"Country;  {country}");
+                        writer.WriteLine($"Position;  {position}");
+                        writer.WriteLine($"Code;  {code}");
+                        writer.WriteLine($"Cellphone;  {cellphone}");
+                        writer.WriteLine($"Phone;  {phone}");
                     }
 
                     //Guardar imagen del empleado
@@ -115,7 +121,8 @@ namespace EmployeeDB
                 {
                     File.Delete(filePath);
                     return CreateEmployee(name, surname, birthdate,
-                            identification, typeIdentification, gender, pathImage, true);
+                            identification, typeIdentification, gender, country, position,
+                            code, cellphone, phone, pathImage, true);
                 }
                 else
                 {
@@ -183,6 +190,21 @@ namespace EmployeeDB
                                 break;
                             case "Gender":
                                 empleado.Genero = valor;
+                                break;
+                            case "Country":
+                                empleado.Nacionalidad = valor;
+                                break;
+                            case "Position":
+                                empleado.Cargo = valor;
+                                break;
+                            case "Code":
+                                empleado.Codigo = valor;
+                                break;
+                            case "Cellphone":
+                                empleado.Celular = valor;
+                                break;
+                            case "Phone":
+                                empleado.TelefonoFijo = valor;
                                 break;
                             default:
                                 break;

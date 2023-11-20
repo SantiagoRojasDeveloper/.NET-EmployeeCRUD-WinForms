@@ -62,7 +62,8 @@ namespace Business
         }
 
         public string CreateEmployee(string name, string surname, string birthdate,
-            string identification, string typeIdentification, string gender, string pathImage,
+            string identification, string typeIdentification, string gender, string country,
+            string position, string code, string cellphone, string phone, string pathImage,
             bool createEmployee) 
         {
             //Validaciones de los campos
@@ -72,6 +73,11 @@ namespace Business
                 || string.IsNullOrWhiteSpace(identification)
                 || string.IsNullOrWhiteSpace(typeIdentification)
                 || string.IsNullOrWhiteSpace(gender)
+                || string.IsNullOrWhiteSpace(country)
+                || string.IsNullOrWhiteSpace(position)
+                || string.IsNullOrWhiteSpace(code)
+                || string.IsNullOrWhiteSpace(cellphone)
+                || string.IsNullOrWhiteSpace(phone)
                 || string.IsNullOrWhiteSpace(pathImage))
             {
                 return "Los campos para insertar al Empleado no estan completos";
@@ -97,7 +103,8 @@ namespace Business
                 }
 
                 return _dbEmployee.CreateEmployee(name, surname, birthdate,
-                    identification, typeIdentification, gender, pathImage, createEmployee);
+                    identification, typeIdentification, gender, country, 
+                    position, code, cellphone, phone, pathImage, createEmployee);
             }
             else
             {

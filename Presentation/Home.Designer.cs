@@ -52,6 +52,16 @@
             this.label8 = new System.Windows.Forms.Label();
             this.BtnUpdate = new System.Windows.Forms.Button();
             this.BtnClearEdit = new System.Windows.Forms.Button();
+            this.TxtPosition = new System.Windows.Forms.TextBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.TxtCountry = new System.Windows.Forms.TextBox();
+            this.TxtCode = new System.Windows.Forms.TextBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.TxtCellphone = new System.Windows.Forms.TextBox();
+            this.TxtPhone = new System.Windows.Forms.TextBox();
+            this.label12 = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.DtgEmployees)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PictureEmployee)).BeginInit();
             this.SuspendLayout();
@@ -241,7 +251,7 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(158, 159);
+            this.button2.Location = new System.Drawing.Point(475, 158);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(165, 23);
             this.button2.TabIndex = 20;
@@ -253,7 +263,7 @@
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(15, 162);
+            this.label8.Location = new System.Drawing.Point(329, 161);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(123, 20);
             this.label8.TabIndex = 21;
@@ -281,11 +291,112 @@
             this.BtnClearEdit.Visible = false;
             this.BtnClearEdit.Click += new System.EventHandler(this.BtnClearEdit_Click);
             // 
+            // TxtPosition
+            // 
+            this.TxtPosition.Location = new System.Drawing.Point(158, 161);
+            this.TxtPosition.MaxLength = 30;
+            this.TxtPosition.Name = "TxtPosition";
+            this.TxtPosition.Size = new System.Drawing.Size(165, 20);
+            this.TxtPosition.TabIndex = 24;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.Location = new System.Drawing.Point(15, 161);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(59, 20);
+            this.label9.TabIndex = 25;
+            this.label9.Text = "Puesto";
+            this.label9.Click += new System.EventHandler(this.label9_Click);
+            // 
+            // TxtCountry
+            // 
+            this.TxtCountry.Location = new System.Drawing.Point(158, 187);
+            this.TxtCountry.MaxLength = 30;
+            this.TxtCountry.Name = "TxtCountry";
+            this.TxtCountry.Size = new System.Drawing.Size(165, 20);
+            this.TxtCountry.TabIndex = 26;
+            // 
+            // TxtCode
+            // 
+            this.TxtCode.Location = new System.Drawing.Point(475, 187);
+            this.TxtCode.MaxLength = 30;
+            this.TxtCode.Name = "TxtCode";
+            this.TxtCode.Size = new System.Drawing.Size(165, 20);
+            this.TxtCode.TabIndex = 27;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.Location = new System.Drawing.Point(15, 187);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(100, 20);
+            this.label10.TabIndex = 28;
+            this.label10.Text = "Nacionalidad";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.Location = new System.Drawing.Point(329, 187);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(59, 20);
+            this.label11.TabIndex = 29;
+            this.label11.Text = "Código";
+            // 
+            // TxtCellphone
+            // 
+            this.TxtCellphone.Location = new System.Drawing.Point(158, 213);
+            this.TxtCellphone.MaxLength = 30;
+            this.TxtCellphone.Name = "TxtCellphone";
+            this.TxtCellphone.Size = new System.Drawing.Size(165, 20);
+            this.TxtCellphone.TabIndex = 30;
+            // 
+            // TxtPhone
+            // 
+            this.TxtPhone.Location = new System.Drawing.Point(475, 213);
+            this.TxtPhone.MaxLength = 30;
+            this.TxtPhone.Name = "TxtPhone";
+            this.TxtPhone.Size = new System.Drawing.Size(165, 20);
+            this.TxtPhone.TabIndex = 31;
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.Location = new System.Drawing.Point(15, 213);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(58, 20);
+            this.label12.TabIndex = 32;
+            this.label12.Text = "Celular";
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label13.Location = new System.Drawing.Point(330, 213);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(100, 20);
+            this.label13.TabIndex = 33;
+            this.label13.Text = "Teléfono Fijo";
+            // 
             // Home
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(871, 466);
+            this.Controls.Add(this.label13);
+            this.Controls.Add(this.label12);
+            this.Controls.Add(this.TxtPhone);
+            this.Controls.Add(this.TxtCellphone);
+            this.Controls.Add(this.label11);
+            this.Controls.Add(this.label10);
+            this.Controls.Add(this.TxtCode);
+            this.Controls.Add(this.TxtCountry);
+            this.Controls.Add(this.label9);
+            this.Controls.Add(this.TxtPosition);
             this.Controls.Add(this.BtnClearEdit);
             this.Controls.Add(this.BtnUpdate);
             this.Controls.Add(this.label8);
@@ -344,5 +455,15 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Button BtnUpdate;
         private System.Windows.Forms.Button BtnClearEdit;
+        private System.Windows.Forms.TextBox TxtPosition;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.TextBox TxtCountry;
+        private System.Windows.Forms.TextBox TxtCode;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.TextBox TxtCellphone;
+        private System.Windows.Forms.TextBox TxtPhone;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Label label13;
     }
 }

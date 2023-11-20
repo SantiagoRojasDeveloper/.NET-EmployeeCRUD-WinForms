@@ -50,6 +50,11 @@ namespace Presentation
                 TxtIdentification.Text = editedEmployee.Identificacion;
                 TxtBirthDate.Text = editedEmployee.FechaNacimiento;
                 TxtGender.Text = editedEmployee.Genero;
+                TxtCountry.Text = editedEmployee.Nacionalidad;
+                TxtPosition.Text = editedEmployee.Cargo;
+                TxtCode.Text = editedEmployee.Codigo;
+                TxtCellphone.Text = editedEmployee.Celular;
+                TxtPhone.Text = editedEmployee.TelefonoFijo;
 
                 _pathImageSelected = _clsBusiness.GetProfileImage(editedEmployee.Identificacion);
                 if (File.Exists(_pathImageSelected))
@@ -101,7 +106,9 @@ namespace Presentation
                 try
                 {
                     string message = this._clsBusiness.CreateEmployee(TxtName.Text, TxtSurname.Text, TxtBirthDate.Text,
-                        TxtIdentification.Text, typeIdentification, gender, _pathImageSelected, true);
+                        TxtIdentification.Text, typeIdentification, gender,
+                        TxtCountry.Text, TxtPosition.Text, TxtCode.Text,
+                        TxtCellphone.Text, TxtPhone.Text, _pathImageSelected, true);
                     if (message == "0")
                     {
                         MessageBox.Show("Acción realizada con éxito");
@@ -159,6 +166,11 @@ namespace Presentation
             TxtIdentification.Enabled = true;
             TxtBirthDate.Clear();
             TxtGender.SelectedIndex = -1;
+            TxtCountry.Clear();
+            TxtPosition.Clear();
+            TxtCode.Clear();
+            TxtCellphone.Clear();
+            TxtPhone.Clear();
             PictureEmployee.Image = null;
         }
 
@@ -217,7 +229,8 @@ namespace Presentation
         {
             string result = this._clsBusiness.CreateEmployee(TxtName.Text,
                 TxtSurname.Text, TxtBirthDate.Text, TxtIdentification.Text, TxtTypeIdentification.Text,
-                TxtGender.Text, _pathImageSelected, false);
+                TxtGender.Text, TxtCountry.Text, TxtPosition.Text, TxtCode.Text,
+                TxtCellphone.Text, TxtPhone.Text, _pathImageSelected, false);
 
             if (result == "0") 
             {
@@ -229,6 +242,11 @@ namespace Presentation
             {
                 MessageBox.Show(result);
             }
+        }
+
+        private void label9_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
