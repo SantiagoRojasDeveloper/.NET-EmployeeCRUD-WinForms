@@ -16,7 +16,7 @@ namespace EmployeeDB
         private string pathEmployeeDB;
 
         //Cadena de conexión a la base de datos
-        private string _dbConnection = "";
+        private string _dbConnection = "Data Source=localhost\\SQLEXPRESS;Initial Catalog=EmployeeManager;Integrated Security=True;TrustServerCertificate=True";
 
         //Variables de consultas
         private string _queryLogin = "IF EXISTS (SELECT 1 FROM [dbo].[LoginApp] WHERE [email] = @User AND [password] = @Password) SELECT 1 ELSE SELECT 0";
@@ -69,34 +69,35 @@ namespace EmployeeDB
             return rowsAffected > 0;
         }
 
-        public string CreateEmployee(string name, string surname, string birthdate,
-            string identification, string typeIdentification, string gender,
-            string country, string position, string code, string cellphone,
-            string phone, string pathImage, bool createImage) 
+        public string CreateEmployee(string acNo, string name, string gender, string no, string nacionality,
+            string telephone, string cargo, string rol, string birthdate, string dischargeDate,
+            string codTar, string phone, string address, string pathImage, bool createEmployee) 
         {
-            if (createImage) 
+            if (createEmployee) 
             {
-                string filePath = $"{pathEmployeeDB}\\{identification}.txt";
+                string filePath = $"{pathEmployeeDB}\\{no}.txt";
 
                 if (!File.Exists(filePath))
                 {
                     using (StreamWriter writer = File.CreateText(filePath))
                     {
+                        writer.WriteLine($"AcNo; {acNo}");
                         writer.WriteLine($"Name; {name}");
-                        writer.WriteLine($"Surname;  {surname}");
-                        writer.WriteLine($"BirthDate;  {birthdate}");
-                        writer.WriteLine($"Identification;  {identification}");
-                        writer.WriteLine($"TypeIdentification;  {typeIdentification}");
                         writer.WriteLine($"Gender;  {gender}");
-                        writer.WriteLine($"Country;  {country}");
-                        writer.WriteLine($"Position;  {position}");
-                        writer.WriteLine($"Code;  {code}");
-                        writer.WriteLine($"Cellphone;  {cellphone}");
+                        writer.WriteLine($"No;  {no}");
+                        writer.WriteLine($"Nacionality;  {nacionality}");
+                        writer.WriteLine($"Telephone;  {telephone}");
+                        writer.WriteLine($"Cargo;  {cargo}");
+                        writer.WriteLine($"Rol;  {rol}");
+                        writer.WriteLine($"Birthdate;  {birthdate}");
+                        writer.WriteLine($"DischargeDate;  {dischargeDate}");
+                        writer.WriteLine($"CodTar;  {codTar}");
                         writer.WriteLine($"Phone;  {phone}");
+                        writer.WriteLine($"Address;  {address}");
                     }
 
                     //Guardar imagen del empleado
-                    string fileName = identification + ".jpg";
+                    string fileName = no + ".jpg";
                     string imagePath = Path.Combine(pathEmployeeDB + "\\EmployeeImage", fileName);
 
                     if (!pathImage.Equals(imagePath)) 
@@ -109,20 +110,20 @@ namespace EmployeeDB
                 }
                 else
                 {
-                    return "Ya existe un empleado con la misma identificación";
+                    return "Ya existe un empleado con el mismo Número (No.)";
                 }
             }
             else
             {
-                string filePath = $"{pathEmployeeDB}\\{identification}.txt";
-                string imagePath = $"{pathEmployeeDB}\\EmployeeImage\\{identification}.jpg";
+                string filePath = $"{pathEmployeeDB}\\{no}.txt";
+                string imagePath = $"{pathEmployeeDB}\\EmployeeImage\\{no}.jpg";
 
                 if (File.Exists(filePath) && File.Exists(imagePath))
                 {
                     File.Delete(filePath);
-                    return CreateEmployee(name, surname, birthdate,
-                            identification, typeIdentification, gender, country, position,
-                            code, cellphone, phone, pathImage, true);
+                    return CreateEmployee(acNo, name, gender, no, nacionality,
+                    telephone, cargo, rol, birthdate, dischargeDate,
+                    codTar, phone, address, pathImage, true);
                 }
                 else
                 {
@@ -133,10 +134,10 @@ namespace EmployeeDB
 
         }
 
-        public string DeleteEmployee(string identification)
+        public string DeleteEmployee(string no)
         {
-            string filePath = $"{pathEmployeeDB}\\{identification}.txt";
-            string imagePath = $"{pathEmployeeDB}\\EmployeeImage\\{identification}.jpg";
+            string filePath = $"{pathEmployeeDB}\\{no}.txt";
+            string imagePath = $"{pathEmployeeDB}\\EmployeeImage\\{no}.jpg";
 
             if (File.Exists(filePath))
             {
@@ -156,6 +157,11 @@ namespace EmployeeDB
 
             List<ClsModelEmployee> listEmployess = new List<ClsModelEmployee>();
 
+            string path = "ruta/a/tu/archivo.txt";
+
+            // Leer todas las líneas del archivo
+            string[] lines = File.ReadAllLines(path);
+
             foreach (string archivo in Directory.GetFiles(rutaDataEmployees))
             {
                 ClsModelEmployee empleado = new ClsModelEmployee();
@@ -173,38 +179,44 @@ namespace EmployeeDB
 
                         switch (propiedad)
                         {
+                            case "AcNo":
+                                empleado.AcNo = valor;
+                                break;
                             case "Name":
-                                empleado.Nombres = valor;
-                                break;
-                            case "Surname":
-                                empleado.Apellidos = valor;
-                                break;
-                            case "BirthDate":
-                                empleado.FechaNacimiento = valor;
-                                break;
-                            case "Identification":
-                                empleado.Identificacion = valor;
-                                break;                           
-                            case "TypeIdentification":
-                                empleado.TipoIdentificacion = valor;
+                                empleado.Name = valor;
                                 break;
                             case "Gender":
-                                empleado.Genero = valor;
+                                empleado.Gender = valor;
                                 break;
-                            case "Country":
-                                empleado.Nacionalidad = valor;
+                            case "No":
+                                empleado.No = valor;
+                                break;                           
+                            case "Nacionality":
+                                empleado.Nacionality = valor;
                                 break;
-                            case "Position":
+                            case "Telephone":
+                                empleado.Telephone = valor;
+                                break;
+                            case "Cargo":
                                 empleado.Cargo = valor;
                                 break;
-                            case "Code":
-                                empleado.Codigo = valor;
+                            case "Rol":
+                                empleado.Rol = valor;
                                 break;
-                            case "Cellphone":
-                                empleado.Celular = valor;
+                            case "Birthdate":
+                                empleado.Birthdate = valor;
+                                break;
+                            case "DischargeDate":
+                                empleado.DischargeDate = valor;
+                                break;
+                            case "CodTar":
+                                empleado.CodTar = valor;
                                 break;
                             case "Phone":
-                                empleado.TelefonoFijo = valor;
+                                empleado.Phone = valor;
+                                break;
+                            case "Address":
+                                empleado.Address = valor;
                                 break;
                             default:
                                 break;
@@ -217,9 +229,87 @@ namespace EmployeeDB
             return listEmployess;
         }
 
-        public string GetProfileImage(string identificacion)
+        public string GetProfileImage(string no)
         {
-            return Path.Combine(pathEmployeeDB + "\\EmployeeImage", identificacion +".jpg");
+            return Path.Combine(pathEmployeeDB + "\\EmployeeImage", no + ".jpg");
+        }
+
+        public ClsModelEmployee searchEmployee(string no)
+        {
+            string employeePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, $"..\\..\\..\\EmployeeDB\\DataEmployees\\{no}.txt");
+
+            string[] lineas = new string[0];
+
+            try {
+                lineas = File.ReadAllLines(employeePath);
+            }
+            catch (Exception err) 
+            {
+                return null;
+            }
+            
+            ClsModelEmployee empleado = new ClsModelEmployee();
+
+            
+
+            foreach (string linea in lineas)
+            {
+                string[] partes = linea.Split(';');
+
+                if (partes.Length == 2)
+                {
+                    string propiedad = partes[0].Trim();
+                    string valor = partes[1].Trim();
+
+                    switch (propiedad)
+                    {
+                        case "AcNo":
+                            empleado.AcNo = valor;
+                            break;
+                        case "Name":
+                            empleado.Name = valor;
+                            break;
+                        case "Gender":
+                            empleado.Gender = valor;
+                            break;
+                        case "No":
+                            empleado.No = valor;
+                            break;
+                        case "Nacionality":
+                            empleado.Nacionality = valor;
+                            break;
+                        case "Telephone":
+                            empleado.Telephone = valor;
+                            break;
+                        case "Cargo":
+                            empleado.Cargo = valor;
+                            break;
+                        case "Rol":
+                            empleado.Rol = valor;
+                            break;
+                        case "Birthdate":
+                            empleado.Birthdate = valor;
+                            break;
+                        case "DischargeDate":
+                            empleado.DischargeDate = valor;
+                            break;
+                        case "CodTar":
+                            empleado.CodTar = valor;
+                            break;
+                        case "Phone":
+                            empleado.Phone = valor;
+                            break;
+                        case "Address":
+                            empleado.Address = valor;
+                            break;
+                        default:
+                            break;
+                    }
+                }
+            }
+
+            return empleado;
+
         }
     }
 }

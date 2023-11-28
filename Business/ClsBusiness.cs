@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Globalization;
+using System.IO;
 using System.Security.Cryptography;
 using System.Text;
 using EmployeeDB;
@@ -61,26 +62,31 @@ namespace Business
 
         }
 
-        public string CreateEmployee(string name, string surname, string birthdate,
-            string identification, string typeIdentification, string gender, string country,
-            string position, string code, string cellphone, string phone, string pathImage,
-            bool createEmployee) 
+        public string CreateEmployee(string acNo, string name, string gender, string no, string nacionality,
+            string telephone, string cargo, string rol, string birthdate, string dischargeDate,
+            string codTar, string phone, string address, string pathImage, bool createEmployee) 
         {
             //Validaciones de los campos
-            if (string.IsNullOrWhiteSpace(name) 
-                || string.IsNullOrWhiteSpace(surname)
+            if (string.IsNullOrWhiteSpace(acNo) 
+                || string.IsNullOrWhiteSpace(name)
                 || birthdate == null
-                || string.IsNullOrWhiteSpace(identification)
-                || string.IsNullOrWhiteSpace(typeIdentification)
+                || dischargeDate == null
                 || string.IsNullOrWhiteSpace(gender)
-                || string.IsNullOrWhiteSpace(country)
-                || string.IsNullOrWhiteSpace(position)
-                || string.IsNullOrWhiteSpace(code)
-                || string.IsNullOrWhiteSpace(cellphone)
+                || string.IsNullOrWhiteSpace(no)
+                || string.IsNullOrWhiteSpace(nacionality)
+                || string.IsNullOrWhiteSpace(telephone)
+                || string.IsNullOrWhiteSpace(cargo)
+                || string.IsNullOrWhiteSpace(rol)
+                || string.IsNullOrWhiteSpace(codTar)
                 || string.IsNullOrWhiteSpace(phone)
-                || string.IsNullOrWhiteSpace(pathImage))
+                || string.IsNullOrWhiteSpace(address))
             {
                 return "Los campos para insertar al Empleado no estan completos";
+            }
+            //Validación de ruta de imagen
+            if (string.IsNullOrWhiteSpace(pathImage)) 
+            {
+                return "Seleccione una imagen para el perfil...";
             }
 
             //Validacion de empleado mayor de edad
@@ -102,9 +108,9 @@ namespace Business
                     return "El empleado es menor de edad";
                 }
 
-                return _dbEmployee.CreateEmployee(name, surname, birthdate,
-                    identification, typeIdentification, gender, country, 
-                    position, code, cellphone, phone, pathImage, createEmployee);
+                return _dbEmployee.CreateEmployee(acNo, name, gender, no, nacionality,
+                    telephone, cargo, rol, birthdate, dischargeDate,
+                    codTar, phone, address, pathImage, createEmployee);
             }
             else
             {
@@ -131,6 +137,11 @@ namespace Business
         public string GetProfileImage(string identificacion)
         {
             return _dbEmployee.GetProfileImage(identificacion);
+        }
+
+        public ClsModelEmployee searchEmployee(string no)
+        {
+            return _dbEmployee.searchEmployee(no);
         }
     }
 }

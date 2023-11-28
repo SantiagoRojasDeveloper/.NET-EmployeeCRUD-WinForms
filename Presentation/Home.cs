@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
+using static System.Net.WebRequestMethods;
 
 namespace Presentation
 {
@@ -19,67 +20,6 @@ namespace Presentation
             _clsBusiness = new ClsBusiness();
             _pathImageSelected = "";
             InitializeComponent();
-            ShowEmployees();
-        }
-
-        private void ShowEmployees() 
-        {
-            List<ClsModelEmployee> listEmployees = _clsBusiness.GetEmployeeList();
-
-            DtgEmployees.DataSource = null;
-            DtgEmployees.Rows.Clear();
-
-            DtgEmployees.DataSource = listEmployees;
-            this.DtgEmployees.Columns[3].ReadOnly = true;
-            DtgEmployees.SelectionChanged += DataGridView_SelectionChanged;
-        }
-
-        private void DataGridView_SelectionChanged(object sender, EventArgs e)
-        {
-            if (DtgEmployees.SelectedRows.Count == 1)
-            {
-                ClsModelEmployee editedEmployee = DtgEmployees.SelectedRows[0].DataBoundItem as ClsModelEmployee;
-                BtnAdd.Visible = false;
-                BtnUpdate.Visible = true;
-                BtnClearEdit.Visible = true;
-                TxtIdentification.Enabled = false;
-
-                TxtName.Text = editedEmployee.Nombres;
-                TxtSurname.Text = editedEmployee.Apellidos;
-                TxtTypeIdentification.Text = editedEmployee.TipoIdentificacion;
-                TxtIdentification.Text = editedEmployee.Identificacion;
-                TxtBirthDate.Text = editedEmployee.FechaNacimiento;
-                TxtGender.Text = editedEmployee.Genero;
-                TxtCountry.Text = editedEmployee.Nacionalidad;
-                TxtPosition.Text = editedEmployee.Cargo;
-                TxtCode.Text = editedEmployee.Codigo;
-                TxtCellphone.Text = editedEmployee.Celular;
-                TxtPhone.Text = editedEmployee.TelefonoFijo;
-
-                _pathImageSelected = _clsBusiness.GetProfileImage(editedEmployee.Identificacion);
-                if (File.Exists(_pathImageSelected))
-                {
-                    using (FileStream fs = new FileStream(_pathImageSelected, FileMode.Open, FileAccess.Read))
-                    {
-                        PictureEmployee.Image = Image.FromStream(fs);
-                        PictureEmployee.SizeMode = PictureBoxSizeMode.StretchImage;
-                    }
-                }
-                else
-                {
-                    MessageBox.Show("No fue posible cargar la imagen del empleado");
-                }
-            }
-            else if(DtgEmployees.SelectedRows.Count > 1)
-            {
-                ClearData();
-                ResetButtons();
-            }
-        }
-
-        private void textBox3_TextChanged(object sender, EventArgs e)
-        {
-
         }
 
         private void button4_Click(object sender, EventArgs e)
@@ -92,26 +32,28 @@ namespace Presentation
 
         private void button3_Click(object sender, EventArgs e)
         {
-            string typeIdentification = "";
+            string rol = "";
             string gender = "";
             try 
             {
-                typeIdentification = TxtTypeIdentification.SelectedItem.ToString();
+                rol = TxtRol.SelectedItem.ToString();
                 gender = TxtGender.SelectedItem.ToString();
             }
             catch (Exception ex){}
 
-            if (typeIdentification != "" && gender != "") 
+            if (rol != "" && gender != "") 
             {
                 try
                 {
-                    string message = this._clsBusiness.CreateEmployee(TxtName.Text, TxtSurname.Text, TxtBirthDate.Text,
-                        TxtIdentification.Text, typeIdentification, gender,
-                        TxtCountry.Text, TxtPosition.Text, TxtCode.Text,
-                        TxtCellphone.Text, TxtPhone.Text, _pathImageSelected, true);
+                    string message = this._clsBusiness.CreateEmployee(TxtAcNo.Text,
+                        TxtName.Text, TxtGender.Text, TxtNo.Text, TxtNacionality.Text,
+                        TxtTelephone.Text, TxtCargo.Text, TxtRol.Text, TxtBirthdate.Text,
+                        TxtDischargeDate.Text, TxtCodTar.Text, TxtPhone.Text, TxtAddress.Text,
+                        _pathImageSelected, true);
+
                     if (message == "0")
                     {
-                        MessageBox.Show("Acción realizada con éxito");
+                        MessageBox.Show("Empleado creado con éxito!");
                         ClearData();
                     }
                     else 
@@ -128,49 +70,39 @@ namespace Presentation
             }
             else
             {
-                MessageBox.Show("Tipo identificación o género vacíos");
+                MessageBox.Show("Los campos para insertar al Empleado no estan completos");
             }
-            ShowEmployees();
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if (DtgEmployees.SelectedRows.Count > 0)
+            DialogResult result = MessageBox.Show("¿Estás seguro de eliminar los registros seleccionados?", "Confirmar eliminación",
+              MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if (result == DialogResult.Yes)
             {
-                DialogResult result = MessageBox.Show("¿Estás seguro de eliminar los registros seleccionados?", "Confirmar eliminación",
-                              MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                if (result == DialogResult.Yes)
-                {
-                    foreach (DataGridViewRow fila in DtgEmployees.SelectedRows)
-                    {
-                        _clsBusiness.DeleteEmployee(""+fila.Cells[3].Value);
-                    }
-                    MessageBox.Show("Registros eliminados con éxito");
-                    ClearData();
-                    ResetButtons();
-                    this.ShowEmployees();
-                }     
-            }
-            else
-            {
-                MessageBox.Show("Para eliminar un empleado, seleccione un registro en la tabla...");
+                _clsBusiness.DeleteEmployee("" + TxtNo.Text);
+                MessageBox.Show($"Empleado con No. {TxtNo.Text} eliminado con éxito.");
+                ClearData();
+                ResetButtons();
             }
         }
 
         private void ClearData() 
         {
+            TxtAcNo.Clear();
             TxtName.Clear();
-            TxtSurname.Clear();
-            TxtTypeIdentification.SelectedIndex = -1;
-            TxtIdentification.Clear();
-            TxtIdentification.Enabled = true;
-            TxtBirthDate.Clear();
             TxtGender.SelectedIndex = -1;
-            TxtCountry.Clear();
-            TxtPosition.Clear();
-            TxtCode.Clear();
-            TxtCellphone.Clear();
+            TxtNo.Clear();
+            TxtNacionality.Clear();
+            TxtTelephone.Clear();
+            TxtCargo.Clear();
+            TxtRol.SelectedIndex = -1;
+            TxtBirthdate.Clear();
+            TxtDischargeDate.Clear();
+            TxtCodTar.Clear();
             TxtPhone.Clear();
+            TxtAddress.Clear();
             PictureEmployee.Image = null;
         }
 
@@ -209,11 +141,7 @@ namespace Presentation
         private void ClearEdition() 
         {
             ResetButtons();
-            TxtIdentification.Enabled = true;
-            foreach (DataGridViewRow row in DtgEmployees.SelectedRows)
-            {
-                row.Selected = false;
-            }
+            TxtNo.Enabled = true;
             ClearData();
         }
 
@@ -222,21 +150,23 @@ namespace Presentation
             BtnAdd.Visible = true;
             BtnUpdate.Visible = false;
             BtnClearEdit.Visible = false;
+            BtnDelete.Visible = false;
             PictureEmployee.Image = null;
+            BtnSearch.Visible = true;
         }
 
         private void BtnUpdate_Click(object sender, EventArgs e)
         {
-            string result = this._clsBusiness.CreateEmployee(TxtName.Text,
-                TxtSurname.Text, TxtBirthDate.Text, TxtIdentification.Text, TxtTypeIdentification.Text,
-                TxtGender.Text, TxtCountry.Text, TxtPosition.Text, TxtCode.Text,
-                TxtCellphone.Text, TxtPhone.Text, _pathImageSelected, false);
+            string result = this._clsBusiness.CreateEmployee(TxtAcNo.Text,
+                TxtName.Text, TxtGender.Text, TxtNo.Text, TxtNacionality.Text,
+                TxtTelephone.Text, TxtCargo.Text, TxtRol.Text, TxtBirthdate.Text,
+                TxtDischargeDate.Text, TxtCodTar.Text, TxtPhone.Text, TxtAddress.Text,
+                _pathImageSelected, false);
 
             if (result == "0") 
             {
                 MessageBox.Show("Perfil actualizado correctamente");
                 ClearEdition();
-                ShowEmployees();
             }
             else
             {
@@ -247,6 +177,71 @@ namespace Presentation
         private void label9_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void label7_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(TxtNo.Text)) {
+                ClsModelEmployee employee = _clsBusiness.searchEmployee(TxtNo.Text);
+                if (employee != null)
+                {
+                    TxtAcNo.Text = employee.AcNo;
+                    TxtName.Text = employee.Name;
+                    TxtGender.Text = employee.Gender;
+                    TxtNo.Text = employee.No;
+                    TxtNo.Enabled = false;
+                    TxtNacionality.Text = employee.Nacionality;
+                    TxtTelephone.Text = employee.Telephone;
+                    TxtCargo.Text = employee.Cargo;
+                    TxtRol.Text = employee.Rol;
+                    TxtBirthdate.Text = employee.Birthdate;
+                    TxtDischargeDate.Text = employee.DischargeDate;
+                    TxtCodTar.Text = employee.CodTar;
+                    TxtPhone.Text = employee.Phone;
+                    TxtAddress.Text = employee.Address;
+
+                    BtnAdd.Visible = false;
+                    BtnSearch.Visible = false;
+                    BtnUpdate.Visible = true;
+                    BtnClearEdit.Visible = true;
+                    BtnDelete.Visible = true;
+                    PictureEmployee.Image = null;
+
+                    _pathImageSelected = _clsBusiness.GetProfileImage(employee.No);
+                    if (System.IO.File.Exists(_pathImageSelected))
+                    {
+                        using (FileStream fs = new FileStream(_pathImageSelected, FileMode.Open, FileAccess.Read))
+                        {
+                            PictureEmployee.Image = Image.FromStream(fs);
+                            PictureEmployee.SizeMode = PictureBoxSizeMode.StretchImage;
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("No fue posible cargar la imagen del empleado");
+                    }
+                }
+                else 
+                {
+                    MessageBox.Show($"El empleado con el No. {TxtNo.Text} no existe...");
+                }
+
+
+
+            }
+            else {
+                MessageBox.Show("Para buscar, ingrese el No. de un empleado...");
+            }
         }
     }
 }
